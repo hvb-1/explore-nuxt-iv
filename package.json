@@ -14,8 +14,6 @@
     "nuxt": "^3.8.2"
   },
   "dependencies": {
-    "vue-router": "4",
-    "@vueuse/core": "^12.5.0",
-    "@vueuse/nuxt": "^12.5.0"
+    "vue-router": "4"
   }
 }
