@@ -9,11 +9,8 @@
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.9.3",
     "@tailwindcss/typography": "^0.5.8",
-    "@vueuse/core": "^12.5.0",
-    "@vueuse/nuxt": "^12.5.0",
+    "@vueuse/core": "^10.7.0",
+    "@vueuse/nuxt": "^10.7.0",
     "nuxt": "^3.8.2"
-  },
-  "dependencies": {
-    "vue-router": "4"
   }
 }
