@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      vue-router:
+        specifier: '4'
+        version: 4.2.5(vue@3.3.11)
     devDependencies:
       '@nuxtjs/tailwindcss':
         specifier: ^6.9.3
