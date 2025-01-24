@@ -22,7 +22,6 @@
     </div>
     <VideoPlayer v-if="lesson.videoId" :videoId="lesson.videoId" />
     <p>{{ lesson.text }}</p>
-
     <LessonCompleteButton
       :model-value="isLessonComplete"
       @update:model-value="toggleComplete"
@@ -33,6 +32,36 @@
 <script setup>
 const course = useCourse();
 const route = useRoute();
+
+definePageMeta({
+  validate({ params }) {
+    const course = useCourse();
+
+    const chapter = course.chapters.find(
+      (chapter) => chapter.slug === params.chapterSlug
+    );
+
+    if (!chapter) {
+      return createError({
+        statusCode: 404,
+        message: "Chapter not found",
+      });
+    }
+
+    const lesson = chapter.lessons.find(
+      (lesson) => lesson.slug === params.lessonSlug
+    );
+
+    if (!lesson) {
+      return createError({
+        statusCode: 404,
+        message: "Lesson not found",
+      });
+    }
+
+    return true;
+  },
+});
 
 const chapter = computed(() => {
   return course.chapters.find(
@@ -53,9 +82,7 @@ useHead({
   title,
 });
 
-const progress = useLocalStorage("progress", () => {
-  return [];
-});
+const progress = useLocalStorage("progress", []);
 
 const isLessonComplete = computed(() => {
   if (!progress.value[chapter.value.number - 1]) {
